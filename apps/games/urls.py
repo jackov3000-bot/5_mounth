@@ -1,9 +1,9 @@
 from django.urls import path
 
-from apps.games.views import GamesDetailAPIView, GamesListAPIView, GenreListAPIView
+from apps.games.views import GameListAPIView, GenreAPIView, GamesDetailAPIView
 
 urlpatterns = [
-    path("list-games", GamesListAPIView.as_view(), name="list-games"),
-    path("list-genres", GenreListAPIView.as_view(), name="list-genres"),
-    path("detail-games/<int:pk>", GamesDetailAPIView.as_view(), name="detail-games"),
+    path("list-games", GameListAPIView.as_view(), name="list-game"),
+    path("list-genre", GenreAPIView.as_view(), name="list-genre"),
+    path("games/<int:id>/", GamesDetailAPIView.as_view(), name="detail-games"),
 ]

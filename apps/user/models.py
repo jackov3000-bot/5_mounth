@@ -1,3 +1,27 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+    email = models.EmailField(
+        unique=True
+    )
+    avatar = models.ImageField(
+        upload_to="avatars/",
+        blank=True, null=True
+    )
+    balance = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=0.00
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ['username']
+
+    def __str__(self):
+        return self.username
 
 # Create your models here.
