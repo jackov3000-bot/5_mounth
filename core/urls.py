@@ -38,7 +38,7 @@ urlpatterns = [
     path("api/v1/games/", include("apps.games.urls")),
     path("api/v1/user/", include("apps.user.urls")),
     path("api/v1/library/", include("apps.library.urls")),
-
+    path("api/v1/reviews/", include("apps.reciews.urls")),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'apps.games',
     'apps.user',
     'apps.library',
+    'apps.reciews',
 ]
 
 MIDDLEWARE = [
