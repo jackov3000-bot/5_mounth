@@ -1,6 +1,10 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
 
@@ -17,7 +21,17 @@ class ProfileAPI(mixins.RetrieveModelMixin,
     serializer_class = ProfileSerializer
     permission_classes = [IsAuthenticated]
 
+
 class LoginAPI(TokenObtainPairView):
-    serializer_class = LoginSerializer
+    serializer_class = LoginSerializer  
+
+
+class LogoutAPI(APIView):
+    def post(self, request):
+        return Response({"message": "Вы успешно вышли."}, status=status.HTTP_200_OK)
+
+class PasswordResetRequestAPI(APIView):
+    def post(self, request):
+        return Response({"message": "Запрос на сброс пароля принят."}, status=status.HTTP_200_OK)
 
 # Create your views here.

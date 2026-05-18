@@ -4,7 +4,9 @@ from django.urls import path
 from apps.user.views import (
     RegisterAPI, 
     ProfileAPI,
-    LoginAPI
+    LoginAPI,
+    LogoutAPI,
+    PasswordResetRequestAPI
 )
 
 router = DefaultRouter()
@@ -13,8 +15,9 @@ router.register("register", RegisterAPI, basename='register')
 router.register("profile", ProfileAPI, basename='profile')
 
 urlpatterns = [
-    path("login", LoginAPI.as_view(), name="login")
+    path("login/", LoginAPI.as_view(), name="login"),
+    path("logout/", LogoutAPI.as_view(), name="logout"),
+    path("password-reset/", PasswordResetRequestAPI.as_view(), name="password_reset"),
 ]
 
-
-urlpatterns += router.urls
+urlpatterns = urlpatterns + router.urls
